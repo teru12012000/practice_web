@@ -1,0 +1,27 @@
+.tab{
+  width: 500px;
+}
+
+.tab-nav{
+  display: flex;/*要素横並び*/
+}        
+.tab-nav-item{
+  margin-right: 2px;/*横の隙間*/
+  background: #ccc;
+  color: #000;
+  padding: 10px 20px;
+  text-decoration: none;/*テキストの線の表示を設定*/
+  border-radius: 5px 5px 0 0;/*要素の外側の角を丸める*/
+
+}
+.tab-nav-item.is-active{
+  background: #000;
+  color: #fff;
+}
+.tab-contents{
+  border:1px solid #ccc;
+  padding: 20px;
+}
+.tab-contents-item{
+  display: none;/*とりあえず表示は消しておく*/
+}
