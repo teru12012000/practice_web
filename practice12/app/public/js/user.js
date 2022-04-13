@@ -4,6 +4,38 @@ const userModule=(()=>{
   const BASE_URL="http://localhost:3000/api/v1/users"
   const headers=new Headers();
   headers.set("Content-Type","application/json");
+ 
+  const hundleError=async(res)=>{
+    const resJson=await res.json();
+    console.log(res.status);
+    switch(res.status){
+      case 200:
+        alert(resJson.message);
+        window.location.href="/";
+        break;
+      case 201:
+        alert(resJson.message);
+        window.location.href="/";
+        break;
+      case 400:
+        //リクエストのパラメータ間違い
+        alert(resJson.error);
+        break;
+      case 404:
+        alert(resJson.error);
+        break;
+      case 500:
+        alert(resJson.error);
+        break;
+      default:
+        alert("何らかのエラーが発生しました.");
+        break;
+      
+    }
+
+
+    
+  }
   return {
     fetchAllUsers:async ()=>{
       const res=await fetch(BASE_URL)//URLの情報を持ってくる
@@ -39,10 +71,7 @@ const userModule=(()=>{
         headers:headers,
         body:JSON.stringify(body)
       });
-      const resJson=await res.json();
-
-      alert(resJson.message);
-      window.location.href="/";
+      return hundleError(res);
     },
     setExistingValue:async(uid)=>{
       const res=await fetch(BASE_URL+"/"+uid);
@@ -52,7 +81,7 @@ const userModule=(()=>{
       document.getElementById('profile').value=resJson.profile;
       document.getElementById('date-of-birth').value=resJson.date_of_birth;
     },
-    saveUsers:async()=>{
+    saveUsers:async(uid)=>{
       const name=document.getElementById("name").value;
       const profile=document.getElementById("profile").value;
       const dateOfBirth=document.getElementById('date-of-birth').value;
@@ -67,9 +96,7 @@ const userModule=(()=>{
         headers:headers,
         body:JSON.stringify(body)
       });
-      const resJson=await res.json();
-      alert(resJson.message);
-      window.location.href="/";
+      return hundleError(res);
     },
     deleteUsers:async(uid)=>{
       const ret=window.confirm('このユーザーを削除しますか?');
@@ -80,9 +107,7 @@ const userModule=(()=>{
           method:"DELETE",
           headers:headers,
         });
-        const resJson=await res.json();
-        alert(resJson.message);
-        window.location.href='/';
+        return hundleError(res);
       }
     }
   }
