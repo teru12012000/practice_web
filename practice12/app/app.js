@@ -17,6 +17,22 @@ app.get('/api/v1/users',(req,res)=>{
   });
   db.close();
 })
+
+app.get('/api/v1/users/:id/following',(req,res)=>{
+  const db=new sqlite3.Database(dbPath);
+  const id=req.params.id;
+  
+  db.all(`select * from following left join users on following.followed_id = users.id where following_id = ${id};`,(err,rows)=>{
+    if(!rows){
+      res.status(404).send({error:"Not Found!!"});
+    }else{
+      res.json(rows);
+    }
+  });
+  db.close();
+})
+
+
 //get a user
 app.get('/api/v1/users/:id',(req,res)=>{
   const db=new sqlite3.Database(dbPath);
