@@ -1,4 +1,4 @@
-/*module.exports = {
+module.exports = {
   env: {
     browser: true,
     es6: true
@@ -7,7 +7,6 @@
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended", // TypeScriptでチェックされる項目をLintから除外する設定
     "prettier", // prettierのextendsは他のextendsより後に記述する
-    "prettier/@typescript-eslint",
   ],
   plugins: ["@typescript-eslint"],
   parser: "@typescript-eslint/parser",
@@ -17,21 +16,4 @@
   },
   root: true, // 上位ディレクトリにある他のeslintrcを参照しないようにする
   rules: {}
-}*/
-{
-  "extends": [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "prettier",
-    "prettier/@typescript-eslint"
-  ],
-  "plugins": ["@typescript-eslint"],
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "sourceType": "module",
-    "project": "./tsconfig.json"
-  },
-  "env": { "browser": true,"es6": true },
-  "root":true,
-  "rules": {}
 }
