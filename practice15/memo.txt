@@ -1,3 +1,8 @@
 パッケージインストール
-npm install --save-dev typescript ts-loader webpack webpack-cli webpack-dev-server
+$npm install --save-dev typescript ts-loader webpack webpack-cli webpack-dev-server
+$npm install --save-dev eslint eslint-config-prettier prettier @typescript-eslint/parser @typescript-eslint/eslint-plugin husky lint-staged
+ESLintとは
+・Javascriptのための静的検証ツール
+・ファイル内のバグチェックやコーディングスタイルの一貫性を保つ
+
 

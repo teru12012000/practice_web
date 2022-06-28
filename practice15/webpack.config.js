@@ -1,10 +1,9 @@
-const path=require('path');
 module.exports={
   entry: {
     bundle: "./src/index.ts",
   },
   output: {
-    path:`${__dirname}/dist`,
+    path: `${__dirname}/dist`,
     filename: "[name].js", // [name]はentryで記述した名前（この設定ならbundle）
   },
   resolve: {
