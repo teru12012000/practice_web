@@ -1,0 +1,2 @@
+NextJsのインストールの時のコマンド
+npx create-next-app@latest --ts
